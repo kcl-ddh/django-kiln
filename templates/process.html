@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block meta_title %}
+{{ title }}
+{% endblock %}
+
+{% block extra_css %}
+{% if css %}
+{% autoescape off %}
+{{ css }}
+{% endautoescape %}
+{% endif %}
+{% endblock %}
+
+{% block extra_js %}
+{% if js %}
+{% autoescape off %}
+{{ js }}
+{% endautoescape %}
+{% endif %}
+{% endblock %}
+
+{% block title %}
+{% autoescape off %}
+{{ header }}
+{% endautoescape %}
+{% endblock %}
+
+{% block main %}
+{% autoescape off %}
+{{ content }}
+{% endautoescape %}
+{% endblock %}
