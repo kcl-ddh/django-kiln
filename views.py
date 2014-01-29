@@ -33,11 +33,14 @@ def process(request, kiln_url, template):
     for element_name in element_names:
         params[element_name] = ''
         element = root.find(element_name)
-        if len(element):
-            for child in element:
-                params[element_name] += ET.tostring(child, encoding='utf-8')
-        elif element.text:
-            params[element_name] = element.text
+
+        if element:
+            if len(element):
+                for child in element:
+                    params[element_name] += ET.tostring(child,
+                                                        encoding='utf-8')
+            elif element.text:
+                params[element_name] = element.text
 
     return render_to_response(template, params,
                               context_instance=RequestContext(request))
